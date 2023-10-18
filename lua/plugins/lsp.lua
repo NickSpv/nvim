@@ -8,7 +8,24 @@ lspconfig.html.setup({
 lspconfig.cssls.setup({
 	capabilities = capabilities,
 })
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup({
+	root_dir = lspconfig.util.root_pattern(".git", "setup.py", "pyproject.toml"),
+	on_new_config = function(config, root_dir)
+		local env = vim.trim(vim.fn.system('cd "' .. root_dir .. '"; poetry env info -p 2>/dev/null'))
+		if string.len(env) > 0 then
+			config.settings.python.pythonPath = env .. "/bin/python"
+		end
+	end,
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
+})
 lspconfig.clangd.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
