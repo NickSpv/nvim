@@ -2,17 +2,7 @@ local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.intelephense.setup({
-	on_attach = function(client, bufnr)
-		-- Enable (omnifunc) completion triggered by <c-x><c-o>
-		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-		-- Here we should add additional keymaps and configuration options.
-	end,
-	flags = {
-		debounce_text_changes = 150,
-	},
-})
+lspconfig.phpactor.setup({})
 lspconfig.html.setup({
 	capabilities = capabilities,
 })
