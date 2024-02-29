@@ -12,6 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- Neoformat
+	{ "sbdchd/neoformat" },
+
 	-- Hop
 	{ "phaazon/hop.nvim" },
 
@@ -36,6 +39,12 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {},
 	},
+	{ "rebelot/kanagawa.nvim" },
+	{ "scottmckendry/cyberdream.nvim" },
+	{ "olivercederborg/poimandres.nvim" },
+	{ "sainnhe/sonokai" },
+	{ "tiagovla/tokyodark.nvim" },
+	{ "savq/melange-nvim" },
 	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-buffer" },
@@ -54,7 +63,7 @@ require("lazy").setup({
 	{ "folke/neodev.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		tag = "0.1.4",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
