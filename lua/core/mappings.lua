@@ -49,3 +49,6 @@ vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=40<CR>")
 -- Splits
 vim.keymap.set("n", "|", ":vsplit<CR>")
 vim.keymap.set("n", "\\", ":split<CR>")
+
+-- Formatter
+vim.keymap.set("n", "mm", ":Neoformat<CR>")

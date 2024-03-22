@@ -1,6 +1,7 @@
 -- Basic
 require("core.autocmd")
 require("core.plugins")
+require("core.neoformat")
 require("core.mappings")
 require("core.colors")
 require("core.configs")
