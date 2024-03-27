@@ -30,6 +30,9 @@ require("lazy").setup({
 		},
 	},
 
+    -- Symbos outline
+    { 'simrat39/symbols-outline.nvim' },
+
 	-- Dap, Mason
     {
         "rcarriga/nvim-dap-ui",
