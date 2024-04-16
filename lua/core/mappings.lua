@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 -- Other
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>x", ":BufferLinePickClose<CR>")
-vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 -- Tabs
@@ -26,7 +26,7 @@ vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
 vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
 
 -- Hop
-vim.keymap.set("n", "f", ":HopWord<CR>")
+vim.keymap.set("n", "ff", ":HopWord<CR>")
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "t", function()

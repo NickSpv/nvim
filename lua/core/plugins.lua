@@ -15,6 +15,8 @@ require("lazy").setup({
 	-- Neoformat
 	{ "sbdchd/neoformat" },
 
+    { "xiyaowong/transparent.nvim" },
+
 	-- Hop
 	{ "phaazon/hop.nvim" },
 
