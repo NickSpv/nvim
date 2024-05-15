@@ -12,6 +12,7 @@ vim.wo.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.undofile = true
 vim.opt.shell = "/bin/zsh"
+vim.opt.colorcolumn = '80'
 
 -- Mouse
 vim.opt.mouse = "a"
