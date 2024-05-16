@@ -47,3 +47,12 @@ vim.keymap.set("n", "\\", ":split<CR>")
 
 -- Formatter
 vim.keymap.set("n", "mm", ":Neoformat<CR>")
+
+-- Todo-comments
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })

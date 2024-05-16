@@ -13,9 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- todo-comments
-    {
-      "folke/todo-comments.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
+    { 
+        "folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+        },
     },
 
 	-- Neoformat
