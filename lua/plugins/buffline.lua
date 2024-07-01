@@ -1,5 +1,6 @@
 require('bufferline').setup {
     options = {
+        tag='v4.5.2',
         buffer_close_icon = '',
         mode = 'buffers',
         offsets = {

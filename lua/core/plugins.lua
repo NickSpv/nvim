@@ -43,95 +43,28 @@ require("lazy").setup({
     -- Symbos outline
     { 'simrat39/symbols-outline.nvim' },
 
-	-- Dap, Mason
+    -- Mason
     {
-        "rcarriga/nvim-dap-ui",
-        event = "VeryLazy",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function()
-          local dap = require("dap")
-          local dapui = require("dapui")
-          dapui.setup()
-          dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open()
-          end
-          dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close()
-          end
-          dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close()
-          end
-          dap.configurations.c = {
-            {
-                -- Change it to "cppdbg" if you have vscode-cpptools
-                type = "codelldb",
-                request = "launch",
-                program = function ()
-                    -- Compile and return exec name
-                    local filetype = vim.bo.filetype
-                    local filename = vim.fn.expand("%")
-                    local basename = vim.fn.expand('%:t:r')
-                    local makefile = os.execute("(ls | grep -i makefile)")
-                    if makefile == "makefile" or makefile == "Makefile" then
-                        os.execute("make debug")
-                    else
-                        if filetype == "c" then
-                            os.execute(string.format("gcc -g -o %s %s", basename, filename))
-                        else
-                            os.execute(string.format("g++ -g -o %s %s", basename, filename))
-                        end
-                    end
-                    return basename
-                end,
-                args = function ()
-                    local argv = {}
-                    arg = vim.fn.input(string.format("argv: "))
-                    for a in string.gmatch(arg, "%S+") do
-                        table.insert(argv, a)
-                    end
-                    vim.cmd('echo ""')
-                    return argv
-                end,
-                cwd = "${workspaceFolder}",
-                -- Uncomment if you want to stop at main
-                -- stopAtEntry = true,
-                MIMode = "gdb",
-                miDebuggerPath = "/usr/bin/gdb",
-                setupCommands = {
-                    {
-                        text = "-enable-pretty-printing",
-                        description = "enable pretty printing",
-                        ignoreFailures = false,
-                    },
-                },
-            },
-        }
-        end
-      },
-      {
         "jay-babu/mason-nvim-dap.nvim",
         event = "VeryLazy",
         dependencies = {
-          "williamboman/mason.nvim",
-          "mfussenegger/nvim-dap",
+            "williamboman/mason.nvim",
+            "mfussenegger/nvim-dap",
         },
         opts = {
-          handlers = {}
+            handlers = {}
         },
-      },
-      {
-        "mfussenegger/nvim-dap",
-      },
-      {
+    },
+    {
         "williamboman/mason.nvim",
         opts = {
-          ensure_installed = {
-            "clangd",
-            "clang-format",
-            "codelldb",
-          }
+            ensure_installed = {
+                "clangd",
+                "clang-format",
+                "codelldb",
+            }
         }
-      },
+    },
 
 	{ "nvim-treesitter/nvim-treesitter" },
 	{ "neovim/nvim-lspconfig" },
@@ -166,8 +99,12 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim" },
 	{ "windwp/nvim-autopairs" },
 	{ "windwp/nvim-ts-autotag" },
-	{ "akinsho/bufferline.nvim" },
 	{
+	    'akinsho/bufferline.nvim',
+	    -- tag = "*",
+	    requires = 'nvim-tree/nvim-web-devicons',
+    },
+    {
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
