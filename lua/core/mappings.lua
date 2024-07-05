@@ -26,7 +26,7 @@ vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
 vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
 
 -- Hop
-vim.keymap.set("n", "ff", ":HopWord<CR>")
+vim.keymap.set("n", "ff", ":HopWordMW<CR>")
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "t", function()
