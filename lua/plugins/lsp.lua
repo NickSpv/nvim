@@ -2,7 +2,18 @@ local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.phpactor.setup({})
+lspconfig.phpactor.setup({
+  on_attach = function(client, bufnr)
+    -- Настройки для PHP Actor
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
+    -- Другие LSP маппинги
+  end,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  init_options = {
+    ["language_server_phpstan.enabled"] = false,
+    ["language_server_psalm.enabled"] = false,
+  }
+})
 lspconfig.html.setup({
 	capabilities = capabilities,
 })
@@ -28,10 +39,10 @@ lspconfig.pyright.setup({
 	},
 })
 lspconfig.clangd.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.prismals.setup({})
 lspconfig.csharp_ls.setup({})
-lspconfig.lua_language_server.setup({})
+lspconfig.lua_ls.setup({})
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.rust_analyzer.setup({
 	settings = {
